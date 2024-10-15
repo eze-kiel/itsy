@@ -17,6 +17,8 @@ const (
 type NftyNotifier struct {
 	Topic        string
 	CallbackAddr string
+	EmbedImg     bool
+	EmbedImgLink string
 }
 
 func New(c config.Config) (NftyNotifier, error) {
@@ -27,6 +29,8 @@ func New(c config.Config) (NftyNotifier, error) {
 	return NftyNotifier{
 		Topic:        c.NftyTopic,
 		CallbackAddr: c.NftyCallbackAddr,
+		EmbedImg:     c.NftyEmbedImg,
+		EmbedImgLink: c.ImgLink,
 	}, nil
 }
 
@@ -46,6 +50,10 @@ func (n NftyNotifier) Send(name string, isSnow bool) error {
 
 	if n.CallbackAddr != "" {
 		req.Header.Set("Click", n.CallbackAddr)
+	}
+
+	if n.EmbedImg {
+		req.Header.Set("Attach", n.EmbedImgLink)
 	}
 
 	_, err = http.DefaultClient.Do(req)

@@ -26,8 +26,10 @@ func main() {
 	// notifier-dedicated flags
 	var nftyTopic string
 	var nftyCallback string
+	var nftyEmbedImg bool
 	flag.StringVar(&nftyTopic, "nfty-topic", "", "nfty topic to send notifications when using nfty notifier")
 	flag.StringVar(&nftyCallback, "nfty-callback-address", "", "if set, you'll be redirected to this address when opening the notification")
+	flag.BoolVar(&nftyEmbedImg, "nfty-embed-image", false, "if set, it will embed the downloaded image to the notification (if size < 2Mo)")
 	flag.Parse()
 
 	if url == "" {
@@ -35,9 +37,12 @@ func main() {
 	}
 
 	conf := config.Config{
+		ImgLink:          url,
 		NftyTopic:        nftyTopic,
 		NftyCallbackAddr: nftyCallback,
+		NftyEmbedImg:     nftyEmbedImg,
 	}
+
 	n, err := notifier.GetNotifier(nkind, conf)
 	if err != nil {
 		logrus.Fatal(err)
