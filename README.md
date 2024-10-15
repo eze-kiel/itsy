@@ -2,6 +2,18 @@
 
 ![](docs/nfty-notification.png)
 
+## About
+
+_Go to the [Usage](#usage) part to see how to use it._
+
+`itsy` is a CLI tool that checks if there's snow on a picture or not. How does it do? It simply verifies the presence of grey/white pixels (aka #C8C8C8) and count them. If there's more than `-threshold`% pixels in the whole image that are lighter than this color, then there's snow!
+
+The image is fetched from the Internet by setting the `-img-url` flag, which comes handy when you want to monitor images from webcams. Currently only JPEGs are supported.
+
+## Notifiers
+
+`itsy` relies on what I called notifiers to ping you back. Currently, only [ntfy](https://ntfy.sh/) and the terminal (stdout) are supported. I personally recommend [ntfy](https://ntfy.sh/) because it's FOSS and works like a charm, especially if you want to receive notifications on your smartphone.
+
 ## Usage
 
 * CLI options:
