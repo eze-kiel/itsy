@@ -26,10 +26,10 @@ Usage of itsy:
         confidence threshold, in percent (100 = absolutely sure) (default 25)
 ```
 
-* Usage example using a cronjob:
+* Usage example using a cronjob and [ntfy](https://ntfy.sh/):
 
 ```
-0 12 * * * /path/to/itsy -img-url "${IMG_URL?}" -name "${MONITOR_NAME?} (cron)" -notifier nfty -nfty-topic is-there-snow-yet  -threshold 25 -nfty-embed-image
+0 12 * * * /path/to/itsy -img-url "${IMG_URL?}" -name "${MONITOR_NAME?} (cron)" -notifier nfty -nfty-topic "${TOPIC?}" -threshold 25 -nfty-embed-image
 ```
 
 ## License
