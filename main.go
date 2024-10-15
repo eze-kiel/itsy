@@ -25,7 +25,7 @@ func main() {
 	var nftyTopic string
 
 	flag.StringVar(&nkind, "notifier", notifier.Terminal, "select notifier to use (term, ntfy)")
-	flag.StringVar(&url, "img-url", "", "url of the image to download periodically")
+	flag.StringVar(&url, "img-url", "", "url of the image to download")
 	flag.StringVar(&cname, "name", "snow monitor", "name of the monitor")
 	flag.Float64Var(&threshold, "threshold", 25, "confidence threshold, in percent (100 = absolutely sure)")
 
