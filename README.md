@@ -44,6 +44,10 @@ Usage of itsy:
 0 12 * * * /path/to/itsy -img-url "${IMG_URL?}" -name "${MONITOR_NAME?} (cron)" -notifier nfty -nfty-topic "${TOPIC?}" -threshold 25 -nfty-embed-image
 ```
 
+## Note on reliability/disclaimer
+
+As you may have guessed, due to the cheap way it "detects" snow presence, `itsy` is probably not very reliable as it, and the default threshold value may require some tweaking depending on the picture you're using.
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
