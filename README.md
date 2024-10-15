@@ -48,10 +48,6 @@ Usage of itsy:
 
 As you may have guessed, due to the cheap way it "detects" snow presence, `itsy` is probably not very reliable as it, and the default threshold value may require some tweaking depending on the picture you're using.
 
-## You without `itsy`
-
-<details>
-
 [![](https://i.redd.it/hdznyjjb5ma31.jpg)](https://www.reddit.com/r/skiing/comments/cdtk89/waiting_for_winter_oc/)
 
 </details>
@@ -59,3 +55,5 @@ As you may have guessed, due to the cheap way it "detects" snow presence, `itsy`
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
+
+<details><summary>You without <code>itsy</code></summary>
