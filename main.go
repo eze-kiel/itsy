@@ -17,11 +17,12 @@ func main() {
 	var url string
 	var cname string
 	var threshold float64
-
+	var snowOnly bool
 	flag.StringVar(&nkind, "notifier", notifier.Terminal, "select notifier to use (term, ntfy)")
 	flag.StringVar(&url, "img-url", "", "url of the image to download (mandatory)")
 	flag.StringVar(&cname, "name", "snow monitor", "name of the monitor")
 	flag.Float64Var(&threshold, "threshold", 25, "confidence threshold, in percent (100 = absolutely sure)")
+	flag.BoolVar(&snowOnly, "snow-only", false, "send notification only if snow has been detected")
 
 	// notifier-dedicated flags
 	var nftyTopic string
@@ -62,8 +63,10 @@ func main() {
 	var isSnow bool
 	if confidence >= threshold {
 		isSnow = true
-	} else {
+	} else if !snowOnly {
 		isSnow = false
+	} else {
+		return
 	}
 
 	if err := n.Send(cname, isSnow); err != nil {
