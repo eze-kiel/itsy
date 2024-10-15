@@ -1,5 +1,7 @@
 # Is there snow yet????
 
+![](docs/nfty-notification.png)
+
 ## Usage
 
 ```
