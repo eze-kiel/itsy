@@ -17,7 +17,6 @@ func main() {
 	var url string
 	var cname string
 	var threshold float64
-	var nftyTopic string
 
 	flag.StringVar(&nkind, "notifier", notifier.Terminal, "select notifier to use (term, ntfy)")
 	flag.StringVar(&url, "img-url", "", "url of the image to download (mandatory)")
@@ -25,7 +24,10 @@ func main() {
 	flag.Float64Var(&threshold, "threshold", 25, "confidence threshold, in percent (100 = absolutely sure)")
 
 	// notifier-dedicated flags
+	var nftyTopic string
+	var nftyCallback string
 	flag.StringVar(&nftyTopic, "nfty-topic", "", "nfty topic to send notifications when using nfty notifier")
+	flag.StringVar(&nftyCallback, "nfty-callback-address", "", "if set, you'll be redirected to this address when opening the notification")
 	flag.Parse()
 
 	if url == "" {
@@ -33,7 +35,8 @@ func main() {
 	}
 
 	conf := config.Config{
-		NftyTopic: nftyTopic,
+		NftyTopic:        nftyTopic,
+		NftyCallbackAddr: nftyCallback,
 	}
 	n, err := notifier.GetNotifier(nkind, conf)
 	if err != nil {

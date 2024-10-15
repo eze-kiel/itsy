@@ -15,7 +15,8 @@ const (
 )
 
 type NftyNotifier struct {
-	Topic string
+	Topic        string
+	CallbackAddr string
 }
 
 func New(c config.Config) (NftyNotifier, error) {
@@ -24,7 +25,8 @@ func New(c config.Config) (NftyNotifier, error) {
 	}
 
 	return NftyNotifier{
-		Topic: c.NftyTopic,
+		Topic:        c.NftyTopic,
+		CallbackAddr: c.NftyCallbackAddr,
 	}, nil
 }
 
@@ -41,6 +43,10 @@ func (n NftyNotifier) Send(name string, isSnow bool) error {
 		return err
 	}
 	req.Header.Set("Title", "Monitor: "+name)
+
+	if n.CallbackAddr != "" {
+		req.Header.Set("Click", n.CallbackAddr)
+	}
 
 	_, err = http.DefaultClient.Do(req)
 	return err

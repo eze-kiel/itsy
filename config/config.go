@@ -1,5 +1,6 @@
 package config
 
 type Config struct {
-	NftyTopic string
+	NftyTopic        string
+	NftyCallbackAddr string
 }
