@@ -10,6 +10,8 @@ Usage of itsy:
         url of the image to download (mandatory)
   -name string
         name of the monitor (default "snow monitor")
+  -nfty-callback-address string
+        if set, you'll be redirected to this address when opening the notification
   -nfty-topic string
         nfty topic to send notifications when using nfty notifier
   -notifier string
