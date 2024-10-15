@@ -1,6 +1,6 @@
 package shared
 
 const (
-	SnowMessage   = "SNOW DETECTED 🚨"
+	SnowMessage   = "SNOW DETECTED 🎉"
 	NoSnowMessage = "no snow yet :("
 )

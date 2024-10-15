@@ -35,18 +35,21 @@ func New(c config.Config) (NftyNotifier, error) {
 }
 
 func (n NftyNotifier) Send(name string, isSnow bool) error {
-	var msg string
+	var msg, tags string
 	if isSnow {
 		msg = shared.SnowMessage
+		tags = "snowflake,rotating_light"
 	} else {
 		msg = shared.NoSnowMessage
+		tags = "pensive"
 	}
 
 	req, err := http.NewRequest("POST", nftyDomain+n.Topic, strings.NewReader(msg))
 	if err != nil {
 		return err
 	}
-	req.Header.Set("Title", "Monitor: "+name)
+	req.Header.Set("Title", name)
+	req.Header.Set("Tags", tags)
 
 	if n.CallbackAddr != "" {
 		req.Header.Set("Click", n.CallbackAddr)
